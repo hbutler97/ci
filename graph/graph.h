@@ -4,10 +4,38 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string>
+#include <deque>
 #include <unordered_map>
 #include "tclap/CmdLine.h"
 
 
+
+
+class TreeNode {
+public:
+  enum NODE_STATE {VISITED, UNVISITED, VISITING};
+ TreeNode(int data):m_data(data),
+    m_left_node(NULL),
+    m_right_node(NULL),
+    m_node_state(UNVISITED),
+    m_count(10){};
+  int getData(void){return m_data;};
+  void addLeftChild(TreeNode *child){m_left_node = child;};
+  void addRightChild(TreeNode *child){m_right_node = child;};
+  TreeNode* getLeftChild(void){return m_left_node;};
+  TreeNode* getRightChild(void){return m_right_node;};
+  void setNodeState(NODE_STATE state){m_node_state = state;};
+  NODE_STATE getNodeState(void){return m_node_state;};
+  void printTree(TreeNode *node);
+  void print_tree(TreeNode *node);
+  void print_tree(TreeNode *node, int space);
+private:
+  int m_data;
+  TreeNode * m_left_node;
+  TreeNode * m_right_node;
+  NODE_STATE m_node_state;
+  int m_count;
+};
 
 class Node {
 public:

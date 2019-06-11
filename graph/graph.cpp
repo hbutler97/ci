@@ -110,3 +110,39 @@ void GraphCreator::getChildren(void) {
     commas.clear();
   }
 }
+void TreeNode::print_tree(TreeNode *node) {
+  print_tree(node, 0);
+}
+
+void TreeNode::print_tree(TreeNode *node, int space) {
+  if(node == NULL)
+    return;
+
+  space += m_count;
+  print_tree(node->getRightChild(), space);
+  std::cout << std::endl;
+  for(int i = m_count; i < space; i++)
+    std::cout << " ";
+  std::cout << node->getData() << "\n";
+  print_tree(node->getLeftChild(), space);
+}
+
+void TreeNode::printTree(TreeNode *node) {
+  std::deque<TreeNode *> queue;
+  
+  queue.push_back(node);
+  while(!queue.empty()) {
+    size_t size = queue.size();
+    for(auto x: queue) {
+      std::cout << x->getData();
+      std::cout << " ";
+      if(x->getLeftChild() != NULL)
+	queue.push_back(x->getLeftChild());
+      if(x->getRightChild() != NULL)
+	queue.push_back(x->getRightChild());
+    }
+    std::cout << std::endl;
+    for(int i = 0; i < size; i++)
+      queue.pop_front();
+  }
+}
