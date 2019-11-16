@@ -77,7 +77,7 @@ class GraphCreator {
   
 };
 //Graph string representation
-//Node Value:child1, child2, child2: Node Value: child1, child2, child3
+//:Node Value:child1, child2, child2: Node Value: child1, child2, child3
 class Graph {
   public:
   Graph(int numb_nodes, std::string node_string) {

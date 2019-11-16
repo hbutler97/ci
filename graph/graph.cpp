@@ -38,6 +38,7 @@ void GraphCreator::locateColons(void) {
     if(pos != std::string::npos)
       m_colons.push_back(pos);
   } while(pos != std::string::npos);
+
 }
 
 void GraphCreator::getNodeStrings(void) {
